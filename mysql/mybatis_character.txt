@@ -1,0 +1,13 @@
+//本文档主要记录mybatis中关于各种符号的信息
+1.mybatis中的Mapper.xml文件中不能使用大于小于号
+	解决方法：
+		1.用<![CDATA[ ]]>标识
+		例：<![CDATA[ where createtime < now() ]]>
+		2.使用转义字符
+		<  :  &lt;
+		<= :  &lt;=
+		>  :  &gt;
+		&  :  &amp;
+		'  :  &apos;
+		'' :  &quot;
+		例：where createtime &lt; Now()
