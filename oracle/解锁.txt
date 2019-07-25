@@ -1,0 +1,18 @@
+查询锁
+SELECT
+	b. SID oracleID,
+	b.username 登录Oracle用户名,
+	b.serial#,
+	spid 操作系统ID,
+	paddr,
+	sql_text 正在执行的SQL,
+	b.machine 计算机名
+FROM
+	v$process A,
+	v$session b,
+	v$sqlarea c
+WHERE
+	A .addr = b.paddr
+AND b.sql_hash_value = c.hash_value;
+--解锁 sid,serial#
+--alter system kill session '854,2365';
